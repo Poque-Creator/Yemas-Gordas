@@ -5,50 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YemasGordas - La Historia de la Familia Huevo</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background: #fff7e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fff7e0 0%, #ffe8b3 100%);
       margin: 0;
       padding: 0;
       color: #333;
+      line-height: 1.6;
     }
     header {
-      background: #f8d57e;
-      padding: 20px;
+      background: linear-gradient(135deg, #ffd54f 0%, #f8d57e 100%);
+      padding: 40px 20px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "🥚";
+      position: absolute;
+      font-size: 150px;
+      opacity: 0.1;
+      left: -30px;
+      top: -30px;
+      transform: rotate(-15deg);
+    }
+    header::after {
+      content: "🥚";
+      position: absolute;
+      font-size: 150px;
+      opacity: 0.1;
+      right: -30px;
+      bottom: -30px;
+      transform: rotate(15deg);
     }
     h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      color: #d97706;
+      position: relative;
+      z-index: 1;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      font-style: italic;
+      color: #92400e;
     }
     nav {
-      margin-top: 10px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
     }
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
       color: #333;
       font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     section {
       max-width: 900px;
-      margin: auto;
-      padding: 20px;
+      margin: 30px auto;
+      padding: 30px;
       background: white;
-      margin-top: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      color: #d97706;
+      border-bottom: 3px solid #fbbf24;
+      padding-bottom: 10px;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+    h3 {
+      color: #f59e0b;
+      margin-top: 30px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    p {
+      text-align: justify;
+      font-size: 1.05rem;
+      margin: 15px 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 12px;
+      margin: 10px 0;
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    ul li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .egg {
       text-align: center;
       margin: 20px 0;
+      font-size: 4rem;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #fbbf24;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #f59e0b;
+      box-shadow: 0 0 10px rgba(245,158,11,0.3);
+    }
+    form button {
+      padding: 12px 30px;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
     footer {
       text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      font-weight: bold;
+      color: #92400e;
+    }
+    .chapter-container {
+      background: #fffbeb;
       padding: 20px;
-      margin-top: 40px;
-      background: #f3c96c;
+      border-radius: 15px;
+      margin: 20px 0;
+      border: 2px solid #fef3c7;
+      transition: all 0.3s ease;
+    }
+    .chapter-container:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transform: scale(1.02);
     }
   </style>
 </head>
@@ -66,6 +204,7 @@
 
   <section id="historia">
     <h2>Historia principal</h2>
+    <div class="egg">🥚</div>
     <p>
       En una repisa soleada de la cocina número 7 vivía la familia Huevo: Don Cascarón,
       Doña Clara, las trillizas Yemita, Amarilla y Suavelina, y el abuelo Huevón.
@@ -81,44 +220,54 @@
   <section id="capitulos">
     <h2>Más historias de la familia Huevo</h2>
 
-    <h3>📘 Capítulo 1: El misterio del cascarón perdido</h3>
-    <p>
-      Un día, mientras limpiaban la despensa, Doña Clara encontró un cascarón antiguo
-      con inscripciones extrañas. El abuelo Huevón aseguró que pertenecía a la legendaria
-      Gallina Dorada, cuya yema podía iluminar una cocina entera. Las trillizas, curiosas
-      como siempre, decidieron investigar.
-      Amarilla encontró a la yema legendaria, pero había perdido su brillo, y viajaron hasta la lámpara
-      para ayudarle a recuperarlo.
-    </p>
+    <div class="chapter-container">
+      <h3>📘 Capítulo 1: El misterio del cascarón perdido</h3>
+      <p>
+        Un día, mientras limpiaban la despensa, Doña Clara encontró un cascarón antiguo
+        con inscripciones extrañas. El abuelo Huevón aseguró que pertenecía a la legendaria
+        Gallina Dorada, cuya yema podía iluminar una cocina entera. Las trillizas, curiosas
+        como siempre, decidieron investigar.
+        Amarilla encontró a la yema legendaria, pero había perdido su brillo, y viajaron hasta la lámpara
+        para ayudarle a recuperarlo.
+      </p>
+    </div>
 
-    <h3>📘 Capítulo 2: El ataque de la espátula gigante</h3>
-    <p>
-      Una noche, un estruendo despertó a todos. ¡La espátula gigante del chef había cobrado
-      vida! Don Cascarón reunió a la familia y, trabajando juntos, lograron atraparla en
-      un tarro de mayonesa. Desde ese día, cada vez que escuchan un "clang", todos tiemblan.
-    </p>
+    <div class="chapter-container">
+      <h3>📘 Capítulo 2: El ataque de la espátula gigante</h3>
+      <p>
+        Una noche, un estruendo despertó a todos. ¡La espátula gigante del chef había cobrado
+        vida! Don Cascarón reunió a la familia y, trabajando juntos, lograron atraparla en
+        un tarro de mayonesa. Desde ese día, cada vez que escuchan un "clang", todos tiemblan.
+      </p>
+    </div>
 
-    <h3>📘 Capítulo 3: El viaje al Refrigerador Prohibido</h3>
-    <p>
-      Yemita, la más valiente, decidió adentrarse en el Refrigerador Prohibido para rescatar
-      al condimento Pimientín, prisionero del Tupperware Hermético. Allí descubrió mundos
-      congelados, luces misteriosas y el terrible soplo del congelador. Conoció a una yema llamada Roja, que
-      no había crecido bien y se quedó como embrión, y quedó relegada al congelador-prisión.
-    </p>
+    <div class="chapter-container">
+      <h3>📘 Capítulo 3: El viaje al Refrigerador Prohibido</h3>
+      <p>
+        Yemita, la más valiente, decidió adentrarse en el Refrigerador Prohibido para rescatar
+        al condimento Pimientín, prisionero del Tupperware Hermético. Allí descubrió mundos
+        congelados, luces misteriosas y el terrible soplo del congelador. Conoció a una yema llamada Roja, que
+        no había crecido bien y se quedó como embrión, y quedó relegada al congelador-prisión.
+      </p>
+    </div>
 
-    <h3>📘 Capítulo 4: La rebelión de las claras</h3>
-    <p>
-      Un ejército de claras montó una protesta exigiendo ser usadas en merengues dignos.
-      Doña Clara negoció con ellas y logró un tratado de paz: cada clara tendría derecho a
-      participar en un postre al menos una vez al mes.
-    </p>
+    <div class="chapter-container">
+      <h3>📘 Capítulo 4: La rebelión de las claras</h3>
+      <p>
+        Un ejército de claras montó una protesta exigiendo ser usadas en merengues dignos.
+        Doña Clara negoció con ellas y logró un tratado de paz: cada clara tendría derecho a
+        participar en un postre al menos una vez al mes.
+      </p>
+    </div>
 
-    <h3>📘 Capítulo 5: El festival de la tortilla suprema</h3>
-    <p>
-      Toda la cocina se preparó para el torneo culinario anual. Las trillizas entrenaron
-      duro para no romperse durante los saltos acrobáticos. Finalmente ganaron el premio a
-      la "Yema más Brillante", aunque todos saben que esa es la Yema Legendaria.
-    </p>
+    <div class="chapter-container">
+      <h3>📘 Capítulo 5: El festival de la tortilla suprema</h3>
+      <p>
+        Toda la cocina se preparó para el torneo culinario anual. Las trillizas entrenaron
+        duro para no romperse durante los saltos acrobáticos. Finalmente ganaron el premio a
+        la "Yema más Brillante", aunque todos saben que esa es la Yema Legendaria.
+      </p>
+    </div>
   </section>
 
   <section id="personajes">
@@ -144,10 +293,10 @@
     <h2>Contacto</h2>
     <p>¿Quieres enviar un mensaje a la familia Huevo?</p>
     <form>
-      <input type="text" placeholder="Tu nombre" style="width:100%;padding:10px;margin-bottom:10px;" />
-      <textarea placeholder="Tu mensaje" style="width:100%;padding:10px;height:120px;"></textarea>
+      <input type="text" placeholder="Tu nombre" />
+      <textarea placeholder="Tu mensaje"></textarea>
       <br>
-      <button style="padding:10px 20px;margin-top:10px;background:#f0b429;border:none;border-radius:6px;font-weight:bold;">
+      <button type="button">
         Enviar
       </button>
     </form>
@@ -157,4 +306,4 @@
     © 2025 YemasGordas — Una cocina, muchas historias.
   </footer>
 </body>
-</html>
+  </html>
